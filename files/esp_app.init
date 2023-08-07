@@ -1,0 +1,22 @@
+#!/bin/sh /etc/rc.common
+ 
+USE_PROCD=1
+
+CONFIGURATION=esp_app
+ 
+start_service() {
+    procd_open_instance
+    procd_set_param command /usr/bin/esp_app /dev/ttyUSB0
+    procd_set_param pidfile /tmp/run/esp_app.pid
+    procd_set_param file /etc/config/esp_app
+    procd_close_instance
+}
+
+service_triggers() {
+    procd_add_reload_trigger "esp_app"
+}
+
+reload_service() {
+    stop
+    start
+}
