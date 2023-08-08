@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=esp_app
 PKG_RELEASE:=1
-PKG_VERSION:=1.2.10
+PKG_VERSION:=1.2.12
 
 include $(INCLUDE_DIR)/package.mk
 
