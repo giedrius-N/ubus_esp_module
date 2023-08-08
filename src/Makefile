@@ -1,4 +1,4 @@
-LDLIBS = -lserialport -lblobmsg_json -lubox -lubus -luci -largp
+LDLIBS = -lserialport -lblobmsg_json -lubox -lubus -lutils_modules
 INCLUDES := -I../
 
 BIN:=esp_app

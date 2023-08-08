@@ -2,14 +2,14 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=esp_app
 PKG_RELEASE:=1
-PKG_VERSION:=1.1.15
+PKG_VERSION:=1.2.10
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/esp_app
 	CATEGORY:=Extra packages
 	TITLE:=esp_app
-	DEPENDS:=+libserialport +libubus +libubox +libblobmsg-json +libuci
+	DEPENDS:=+libserialport +libubus +libubox +libblobmsg-json +libtuyasdk
 endef
 
 define Package/esp_app/install

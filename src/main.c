@@ -7,8 +7,17 @@
 #include <libubus.h>
 #include "ubus_utils.h"
 
+static void uloop_handle_sigint(int signo)
+{
+    uloop_cancelled = true;
+}
+
 int main(int argc, char **argv)
 {
+	signal(SIGTERM, uloop_handle_sigint);
+	signal(SIGINT, uloop_handle_sigint);
+	signal(SIGQUIT, uloop_handle_sigint);
+
 	struct ubus_context *ctx;
 
 	uloop_init();

@@ -30,5 +30,7 @@ struct ubus_object_type esp_object_type;
 struct ubus_object esp_object;
 
 int send_data(const char *port, const char *data);
+int response(char responseJSON[]);
+void print_status(char *message, struct ubus_context *ctx, struct ubus_request_data *req);
 
 #endif
