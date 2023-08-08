@@ -1,12 +1,23 @@
 LDLIBS = -lserialport -lblobmsg_json -lubox -lubus -luci -largp
+INCLUDES := -I../
 
 BIN:=esp_app
+SRCS := $(wildcard *.c)
+OBJS := $(filter-out main.o, $(SRCS:.c=.o))
+MAIN_OBJ := main.o
+
 .PHONY: all clean
 
 all: $(BIN)
 
-$(BIN): main.c
-	$(CC) -o $@ $^ $(LDLIBS)
+$(BIN): $(OBJS) $(MAIN_OBJ)
+	$(CC) -o $@ $(OBJS) $(MAIN_OBJ) $(LDLIBS)
+
+%.o: %.c
+	$(CC) -c $(INCLUDES) $< -o $@
+
+$(MAIN_OBJ): main.c
+	$(CC) -c $(INCLUDES) $< -o $@
 
 clean:
-	$(RM) $(BIN)
+	$(RM) $(OBJS) $(MAIN_OBJ) $(BIN)
